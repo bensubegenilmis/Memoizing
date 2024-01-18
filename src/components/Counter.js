@@ -1,12 +1,36 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import Header from './Header';
+
 
 const Counter = () => {
+
+  console.log("Counter component re-render");
+
+  const [count, setCount] = useState(0);
+
   return (
-    <View>
-      <Text>Counter</Text>
+    <View style={styles.container} >
+      <Header count= {count <5 ? count: 5}/>
+
+      <Text style={styles.text} >{count}</Text>
+      <Button title="Arttır" onPress={() => setCount(count + 1)} />
+
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container:
+  {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text:
+  {
+    fontSize: 24,
+  },
+
+});
 
 export default Counter;
